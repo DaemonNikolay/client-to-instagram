@@ -10,6 +10,8 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
+use yii\httpclient\Client;
+
 class SiteController extends Controller
 {
     /**
@@ -93,9 +95,9 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-        Yii::$app->user->logout();
 
-        return $this->goHome();
+
+        $this->goHome();
     }
 
     /**
@@ -123,6 +125,8 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+//         $this->redirect('https://www.instagram.com/accounts/logout');
+
         return $this->render('about');
     }
 }

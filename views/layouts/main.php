@@ -43,19 +43,19 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'Авторизация', 'url' => ['\api.instagram.com/oauth/authorize/?client_id=ea9154d13ecf46118d18784144b6481d&redirect_uri='.'http://client-instagram.local/'.'&response_type=token']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
+            ['label' => 'Выйти', 'url' => ['/site/about']],
+//            Yii::$app->user->isGuest ? (
+//                ['label' => 'Login', 'url' => ['/site/login']]
+//            ) : (
+//                '<li>'
+//                . Html::beginForm(['/site/logout'], 'post')
+//                . Html::submitButton(
+//                    'Logout (' . Yii::$app->user->identity->username . ')',
+//                    ['class' => 'btn btn-link logout']
+//                )
+//                . Html::endForm()
+//                . '</li>'
+//            )
         ],
     ]);
     NavBar::end();
