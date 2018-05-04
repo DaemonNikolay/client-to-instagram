@@ -41,3 +41,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
 </div>
+
+
+<script>
+    function deleteCookie(name) {
+        var date = new Date(); // Берём текущую дату
+        date.setTime(date.getTime() - 1); // Возвращаемся в "прошлое"
+        document.cookie = name += "=; expires=" + date.toGMTString(); // Устанавливаем cookie пустое значение и срок действия до прошедшего уже времени
+    }
+
+    deleteCookie("accessToken");
+</script>

@@ -95,8 +95,6 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-
-
         $this->goHome();
     }
 

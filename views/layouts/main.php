@@ -41,7 +41,8 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Описание', 'url' => ['/site/index']],
+            ['label' => 'Главня', 'url' => ['/site/contact']],
             ['label' => 'Авторизация', 'url' => ['\api.instagram.com/oauth/authorize/?client_id=ea9154d13ecf46118d18784144b6481d&redirect_uri='.'http://client-instagram.local/'.'&response_type=token']],
             ['label' => 'Выйти', 'url' => ['/site/about']],
 //            Yii::$app->user->isGuest ? (
