@@ -9,19 +9,35 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 use yii\httpclient\Client;
+use yii\bootstrap\Modal;
 
 $accessToken = $_COOKIE['accessToken'];
-$response = file_get_contents("https://api.instagram.com/v1/users/self/?access_token=" . $accessToken);
+$response = file_get_contents("https://api.instagram.com/v1/users/self/media/recent/?access_token=" . $accessToken . "&count=5");
 
 $response = json_decode($response, true);
-$profile_picture = $response['data']['profile_picture'];
-$full_name = $response['data']['full_name'];
-$username = $response['data']['username'];
+
+echo "<pre>";
+var_dump($response);
+echo "</pre>";
+
+$profile_picture = $response['data'][0]['user']['profile_picture'];
+$full_name = $response['data'][0]['user']['full_name'];
+$username = $response['data'][0]['user']['username'];
 
 $this->title = $username;
 $this->params['breadcrumbs'][] = $this->title;
 
-//echo $profile_picture;
+//for ($i = 0; $i < count($response['data']); $i++) {
+//    foreach ($response['data'][$i]['images'] as $image) {
+//        echo $image['url'];
+//        echo "<br />";
+//        break;
+//    }
+//
+//    echo "<hr />";
+//}
+
+
 
 ?>
 <div class="site-contact">
@@ -31,6 +47,34 @@ $this->params['breadcrumbs'][] = $this->title;
         <img src="<?= $profile_picture ?>" alt="Profile image">
         <figcaption><?= $full_name ?></figcaption>
     </figure>
+
+    <br/>
+    <br/>
+
+    <table class="table">
+
+        <tr>
+            <?php
+
+            for ($i = 0; $i < count($response['data']); $i++) {
+
+                if ($i % 3 == 0) {
+                    echo '</tr><tr>';
+                }
+
+                foreach ($response['data'][$i]['images'] as $image) {
+
+                    echo '<td><img src=" ' . $image['url'] . '">';
+                    echo '  </td>';
+
+                    break;
+                }
+            }
+
+            ?>
+
+        </tr>
+    </table>
 </div>
 
 

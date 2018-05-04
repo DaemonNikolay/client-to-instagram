@@ -98,6 +98,12 @@ class SiteController extends Controller
         $this->goHome();
     }
 
+
+    public function actionSearch()
+    {
+        return $this->render('search');
+    }
+
     /**
      * Displays contact page.
      *
