@@ -39,7 +39,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="site-about">
     <h1><?= Html::encode($this->title) ?></h1>
-
+    <h2>Вы вышли!</h2>
+    <h3>Авторизуйтесь...<h3/>
 </div>
 
 
